@@ -3,5 +3,9 @@
             [scratch.core :refer :all]))
 
 (deftest a-test
-  (testing "FIXME, I fail."
-    (is (= 0 1))))
+  (testing "Numbers are equal to themselves, right?"
+    (is (= 0 0))))
+
+(deftest pow-test
+  (testing "unity"
+    (is (= 1 (pow 1 1)))))
