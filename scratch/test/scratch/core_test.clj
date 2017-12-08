@@ -10,4 +10,6 @@
   (testing "unity"
     (is (= 1 (pow 1 1))))
   (testing "square integers"
-    (is (= 9 (pow 3 2)))))
+    (is (= 9 (pow 3 2))))
+  (testing "0^0"
+    (is (= 1 (pow 0 0)))))
