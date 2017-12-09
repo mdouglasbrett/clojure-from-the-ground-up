@@ -32,5 +32,9 @@
                (:driving_under_influence county)]))
        (into {})))
 
+(defn prevalence
+  "Given a JSON filename of UCR crime data for a particular year, find the prevalence of DUIs per county."
+  [file])
+
 
 
