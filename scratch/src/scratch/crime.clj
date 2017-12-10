@@ -32,9 +32,22 @@
                (:driving_under_influence county)]))
        (into {})))
 
-(defn prevalence
+(defn prevalence-of-duis
   "Given a JSON filename of UCR crime data for a particular year, find the prevalence of DUIs per county."
-  [file])
-
-
+  [file]
+  (->> file
+       load-json
+       (map (fn [county]
+               {:county (fips (fips-code county))
+                :duis (:driving_under_influence county)
+                :population (:county_population county)
+                :prevalence (double (if
+                                      (pos?
+                                        (:county_population county))
+                                      (/
+                                       (:driving_under_influence county)
+                                       (:county_population county))
+                                      0))}))
+       (sort-by :prevalence)
+       (take-last 10)))
 
